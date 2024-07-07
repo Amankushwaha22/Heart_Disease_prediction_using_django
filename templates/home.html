@@ -1,0 +1,93 @@
+{% load static %} <!-- Load static files -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <title>Disease Predictor</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Include custom CSS file -->
+  <style>
+    body {
+      background: linear-gradient(45deg, #87CEEB, #87CEFA, #B0E0E6, #ADD8E6, #87CEEB);
+      background-size: 300% 300%;
+      animation: gradient 15s ease infinite;
+      color: black; /* Change text color to black for better readability on a lighter background */
+      height: 100vh; /* Ensure the body takes full height of the viewport */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0; /* Remove default margin */
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .ok {
+      color: black;
+      font-size: 30px;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.8); /* Lighten the card background for better readability */
+      color: black; /* Change card text color to black */
+    }
+
+    .btn-custom {
+      border-radius: 30px;
+      background: linear-gradient(45deg, #00BFFF, #1E90FF);
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: background 0.3s ease-in-out;
+    }
+
+    .btn-custom:hover {
+      background: linear-gradient(45deg, #1E90FF, #00BFFF);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-body text-center">
+        <h5 class="card-title text-muted text-uppercase">
+          <strong class="ok">HEART DISEASES PREDICTION</strong>
+        </h5>
+        <a href="{% url 'heart' %}" class="btn btn-custom">KNOW HEART HEALTH STATUS</a> <!-- Link to the 'heart' view -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJTY5KVphtPhzWj9WO1clHTMGaHfQw5K2FYDuhldQFI8Fg47H"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIyYp3gy4Vubja2ih5DkzVppkv5nVRFUgoFfH9bG"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

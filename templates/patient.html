@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(45deg, #87CEEB, #87CEFA, #B0E0E6, #ADD8E6, #87CEEB);
+        background-size: 300% 300%;
+        animation: gradient 15s ease infinite;
+        color: black;
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .btn-secondary-custom {
+        border-radius: 30px;
+        background: linear-gradient(45deg, #32CD32, #228B22);
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: background 0.3s ease-in-out;
+        margin: 5px;
+    }
+
+    .btn-secondary-custom:hover {
+        background: linear-gradient(45deg, #228B22, #32CD32);
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.8);
+        color: black;
+    }
+
+    .table-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 850px; /* Adjust the gap value as needed */
+    }
+</style>
+
+<div class="container mt-5 table-container">
+    <h2 class="text-center">Stored Patient Data</h2>
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>CP</th>
+                <th>TRESTBPS</th>
+                <th>CHOL</th>
+                <th>FBS</th>
+                <th>RESTECG</th>
+                <th>THALACH</th>
+                <th>EXANG</th>
+                <th>OLDPEAK</th>
+                <th>SLOPE</th>
+                <th>CA</th>
+                <th>THAL</th>
+                <th>Prediction</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patient in patients %}
+            <tr>
+                <td>{{ patient.id }}</td>
+                <td>{{ patient.age }}</td>
+                <td>{{ patient.sex }}</td>
+                <td>{{ patient.cp }}</td>
+                <td>{{ patient.trestbps }}</td>
+                <td>{{ patient.chol }}</td>
+                <td>{{ patient.fbs }}</td>
+                <td>{{ patient.restecg }}</td>
+                <td>{{ patient.thalach }}</td>
+                <td>{{ patient.exang }}</td>
+                <td>{{ patient.oldpeak }}</td>
+                <td>{{ patient.slope }}</td>
+                <td>{{ patient.ca }}</td>
+                <td>{{ patient.thal }}</td>
+                <td>
+                    {% if patient.prediction == 2 %}
+                        Heart Disease
+                    {% else %}
+                        No Heart Disease
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="button-container mt-4">
+        <a href="{% url 'home' %}" class="btn-secondary-custom">
+            Home
+        </a>
+        <a href="{% url 'heart' %}" class="btn-secondary-custom">
+            Form
+        </a>
+    </div>
+</div>
+{% endblock %}

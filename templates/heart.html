@@ -1,0 +1,103 @@
+{% extends 'base.html' %} <!-- Extend the 'base.html' template -->
+
+{% block content %} <!-- Define the content block to override -->
+
+<style>
+    body {
+        background: linear-gradient(45deg, #87CEEB, #87CEFA, #B0E0E6, #ADD8E6, #87CEEB);
+        background-size: 300% 300%;
+        animation: gradient 15s ease infinite;
+        color: black; /* Change text color to black for better readability on a lighter background */
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .ok {
+        color: black;
+        font-size: 50px;
+    }
+
+    .btn-custom {
+        border-radius: 30px;
+        background: linear-gradient(45deg, #00BFFF, #1E90FF);
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: background 0.3s ease-in-out;
+    }
+
+    .btn-custom:hover {
+        background: linear-gradient(45deg, #1E90FF, #00BFFF);
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.8); /* Lighten the card background for better readability */
+        color: black; /* Change card text color to black */
+    }
+
+    .btn-secondary-custom {
+        border-radius: 30px;
+        background: linear-gradient(45deg, #32CD32, #228B22);
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: background 0.3s ease-in-out;
+    }
+
+    .btn-secondary-custom:hover {
+        background: linear-gradient(45deg, #228B22, #32CD32);
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="display-4 my-2 text-center">
+        <strong class="ok">Heart Disease Prediction</strong> <br>
+    </div>
+    <hr />
+
+    {% if context %} <!-- Check if 'context' variable exists -->
+    <div class="h1 my-2 text-center">
+        You {{ context }} heart disease.
+    </div>
+    {% endif %}
+
+    <div class="col-md-6 mx-auto"> <!-- Center the form -->
+        <form class="card p-4" method="POST" action="{% url 'heart' %}"> <!-- Form to submit user data to 'heart' view -->
+            {% csrf_token %} <!-- Add CSRF token for form submission security -->
+            {{ form }} <!-- Render the HeartDiseaseForm object fields -->
+
+            <div class="mt-4">
+                <button type="submit" class="btn-lg btn-block btn-custom mb-5">
+                    Submit
+                </button>
+            </div>
+
+            <div class="mt-4 d-flex justify-content-between">
+                <a href="{% url 'home' %}" class="btn-secondary-custom">
+                    Home
+                </a>
+                <a href="{% url 'view_patients' %}" class="btn-secondary-custom">
+                    Patients List
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %} <!-- End of content block -->
